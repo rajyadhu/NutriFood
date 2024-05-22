@@ -1,0 +1,102 @@
+{% load static %}
+<html lang="en">
+  <head>
+  	<title>Messages</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="{% static 'tabble/css/style.css' %}">
+
+	</head>
+	<body>
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">MESSAGES</h2>
+				</div>
+			</div>
+
+
+			<div style="color:blue;" align="center">
+				{% if messages %}
+					{% for msg in messages %}
+				<h4 style="color:blue;">{{ msg }}</h4>
+					{% endfor %}
+				{% endif %}
+			</div>
+
+			{% if bb %}
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-bordered table-dark table-hover">
+						  <thead>
+                             <tr>
+                                <th>Patient</th>
+                                <th>Message</th>
+                              </tr>
+						  </thead>
+
+						  <tbody>
+						{% for i in bb %}
+						    <tr>
+
+                              <th scope="row">
+                                 	 {{i.From_reg.user.first_name}} {{i.From_reg.user.last_name}}
+                              </th>
+
+                              <td>
+                                 {{i.Message_content}}
+                              </td>
+
+
+                               <td>
+                                <button onclick="window.location.href = '{% url 'reply_msg_admin' i.id %}';">Reply</button>
+                              </td>
+
+						    </tr>
+                            {% endfor %}
+						  </tbody>
+						</table>
+
+                        {% else %}
+
+                        <h1 align="center" style="color:blue">No messages available</h1>
+
+                        {% endif %}
+
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<br><br>
+
+
+	</section>
+
+	<script src="{% static 'tabble/js/jquery.min.js' %}"></script>
+  <script src="{% static 'tabble/js/popper.js' %}"></script>
+  <script src="{% static 'tabble/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'tabble/js/main.js' %}"></script>
+
+
+    <div align="center">
+	    <button onclick="window.location.href = '{% url 'sent_msg_admin' %}';">Send message</button>
+		<button onclick="window.location.href = '{% url 'already_sent_msg_diet' %}';">Sent messages</button>
+        <button onclick="window.location.href = '{% url 'dietician_home' %}';">Back</button>
+    </div>
+
+
+</body>
+</html>
+
