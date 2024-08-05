@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin registration</title>
+    <style>
+                /*Start Global Style*/
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background:#e9ebee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:100vh;
+            font-family: sans-serif;
+        }
+        .container{
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+          height:100%
+        }
+
+        .login ,.register{width: 50%}
+
+        /*Start Login Style*/
+        .login{
+            float:left;
+            background-color: #fafafa;
+            height: 100%;
+            border-radius: 10px 0 0 10px;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .login h1{
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        input[type="submit"] , input[type="reset"]{
+            background-color: transparent;
+            border: 1px solid #FFF;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 20px;
+            text-transform: uppercase;
+            transition:0.2s all  ease-in-out;
+        }
+
+            input[type="submit"]:hover , input[type="reset"]:hover{
+            color: #9526a9;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="email"] , input[type="password"] , input[type="text"]{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 30px;
+            border: none;
+            background-color: #eeeeef;
+        }
+        input[type="checkbox"]{
+            float: left;
+            margin-right: 5px;
+        }
+        .login span{
+            float: left
+        }
+        .login a{
+            float: right;
+            text-decoration: none;
+            color: #000;
+            transition: 0.3s all ease-in-out;
+        }
+        .login a:hover{color: #9526a9;font-weight: bold}
+        .login button{
+            width: 100%;
+            margin: 30px 0;
+            padding: 10px;
+            border: none;
+            background-color: #9526a9;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s all ease-in-out;
+        }
+        .login button:hover{
+            width:97%;
+            font-size: 22px;
+            border-radius: 5px;
+
+        }
+        .login hr{
+            width: 30%;
+            display: inline-block
+        }
+
+        .login p{
+            display: inline-block;
+            margin: 0px 10px 30px;
+        }
+        .login ul{
+            list-style: none;
+            margin-bottom:40px;
+        }
+        .login ul li{
+            display: inline-block;
+            margin-right: 30px;
+            cursor: pointer;
+        }
+        .login ul li:hover{opacity: 0.6}
+        .login ul li:last-child{margin-right: 0}
+        .login .copyright{
+            display: inline-block;
+            float: none;
+        }
+        /*Start Register Style*/
+        .register{
+            float: right;
+            background-color:#06BBCC;
+            height: 100%;
+            color:#fff;
+            border-radius:  0 10px 10px  0;
+            text-align: center;
+            padding: 100px 0;
+        }
+        .register h2{
+            margin: 30px 0;
+            font-size: 50px;
+            letter-spacing: 3px
+        }
+        .register p{
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .register button{
+            background-color: transparent;
+            border: 1px solid #FFF;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 20px;
+            text-transform: uppercase;
+            transition:0.2s all  ease-in-out;
+        }
+        .register button:hover{
+            color: #9526a9;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+      <div class="login">
+         <div class="container">
+              <h1>Admin registration</h1>
+
+           <div style="color:blue;" align="center">
+               {% if messages %}
+                  {% for msg in messages %}
+                        {{ msg }}
+                  {% endfor %}
+               {% endif %}
+            </div>
+
+        <form id="multistepsform" method="post" action="{% url 'admin_reg' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+              <input type="text" size="25" placeholder="Enter firstname" name="first_name" required><br>
+                <input type="text" size="25" placeholder="Enter lastname" name="last_name" required><br>
+                <input type="text" size="25" placeholder="Enter username" name="user_name" required><br>
+                <input type="email" id="email" size="25" placeholder="Enter email" name="email" required><br>
+                <input type="password" id="password" size="25" placeholder="Enter password" name="psw" required><br>
+
+
+         </div>
+      </div>
+      <div class="register">
+          <div class="container">
+              <i class="fas fa-user-plus fa-5x"></i>
+              <h2>Hello,admin!</h2>
+              <p>Enter your personal details and start journey with us</p>
+              <input type="submit" value="Create account"/>&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="reset" value="reset"/><br><br>
+              <button type="button" onclick="location.href='{% url 'home' %}'">Back</button>
+              </form>
+          </div>
+      </div>
+    </div>
+
+
+
+<script>
+    document.getElementById('multistepsform').addEventListener('submit', function(event) {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value; // Get the password input value
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // regex for email validation
+      var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // regex for password validation
+
+      if (!emailRegex.test(email)) {
+        event.preventDefault(); // prevent form submission if email is invalid
+        alert('Please enter a valid email address.');
+      }
+
+      if (!passwordRegex.test(password)) {
+        event.preventDefault(); // prevent form submission if password is invalid
+        alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.');
+      }
+    });
+  </script>
+
+
+
+</body>
+</html>

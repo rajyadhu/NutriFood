@@ -1,0 +1,1130 @@
+{% load static %}
+<html lang="en">
+  <head>
+  	<title>Diet plan</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="{% static 'tabble/css/style.css' %}">
+
+	</head>
+	<body>
+
+	<section class="ftco-section">
+		<div class="container">
+
+
+			<div class="row justify-content-center">
+
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">DIET PLAN FOR {{calr}} kcal/day</h2>
+				</div>
+
+			<div style="color:blue;" align="center">
+				{% if messages %}
+					{% for msg in messages %}
+							{{ msg }}
+					{% endfor %}
+				{% endif %}
+			</div>
+
+			</div>
+
+
+
+			  <center>
+            <button type="submit" onclick="loadd_mon()" >Monday</button>&nbsp &nbsp &nbsp
+            <button type="submit" onclick="loadd_tue()" >Tuesday</button>&nbsp &nbsp &nbsp
+			<button type="submit" onclick="loadd_wed()" >Wednesday</button>&nbsp &nbsp &nbsp
+            <button type="submit" onclick="loadd_thu()" >Thursday</button>&nbsp &nbsp &nbsp
+			<button type="submit" onclick="loadd_fri()" >Friday</button>&nbsp &nbsp &nbsp
+            <button type="submit" onclick="loadd_sat()" >Saturday</button>&nbsp &nbsp &nbsp
+            <button type="submit" onclick="loadd_sun()" >Sunday</button>&nbsp &nbsp &nbsp
+            </center><br><br>
+
+
+
+			{% if mon_b %}
+
+			<div id="mon_mon">
+            <h2 class="heading-section">MONDAY</h2>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-bordered table-dark table-hover">
+						  <thead>
+						    <tr>
+
+								<th>
+									Day
+								</th>
+
+								<th>
+									Slot
+								</th>
+
+								<th>
+									Food
+								</th>
+
+								<th>
+									Quantity
+								</th>
+
+								<th>
+									Protein (grams)
+								</th>
+
+								<th>
+									Carbohydrates (grams)
+								</th>
+
+								<th>
+									Fibre (grams)
+								</th>
+
+								<th>
+									 Fat (grams)
+								</th>
+
+								<th>
+									Calory (kcal)
+								</th>
+
+
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						  {% for i in mon_b %}
+
+						    <tr>
+
+								<td>
+									{{i.Day}}
+								</td>
+
+								<td>
+									{{i.day_slot}}
+								</td>
+
+								<td>
+									{{i.food_name}}
+								</td>
+
+								<td>
+									{{i.quantity_needed}} {{i.unit}}
+								</td>
+
+								<td>
+									{{i.protein_needed}}
+								</td>
+
+								<td>
+									{{i.carbohydrates_needed}}
+								</td>
+
+								<td>
+									{{i.fibre_needed}}
+								</td>
+
+								<td>
+									{{i.fat_needed}}
+								</td>
+
+								<td>
+									{{i.current_needed_calory}}
+								</td>
+
+						    </tr>
+
+						  {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+
+			<h1 align="center" style="color:blue">No diet plan for monday</h1>
+
+			{% endif %}
+
+
+			<br>
+			<hr style="color:white:width:10px;">
+			<br>
+
+			</div>
+
+
+
+
+
+
+			{% if tue_b %}
+
+
+			<div id="tue_tue">
+            <h2 class="heading-section">TUESDAY</h2>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-bordered table-dark table-hover">
+						  <thead>
+						    <tr>
+
+								<th>
+									Day
+								</th>
+
+								<th>
+									Slot
+								</th>
+
+								<th>
+									Food
+								</th>
+
+								<th>
+									Quantity
+								</th>
+
+								<th>
+									Protein (grams)
+								</th>
+
+								<th>
+									Carbohydrates (grams)
+								</th>
+
+								<th>
+									Fibre (grams)
+								</th>
+
+								<th>
+									 Fat (grams)
+								</th>
+
+								<th>
+									Calory (kcal)
+								</th>
+
+
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						  {% for i in tue_b %}
+
+						    <tr>
+
+								<td>
+									{{i.Day}}
+								</td>
+
+								<td>
+									{{i.day_slot}}
+								</td>
+
+								<td>
+									{{i.food_name}}
+								</td>
+
+								<td>
+									{{i.quantity_needed}} {{i.unit}}
+								</td>
+
+								<td>
+									{{i.protein_needed}}
+								</td>
+
+								<td>
+									{{i.carbohydrates_needed}}
+								</td>
+
+								<td>
+									{{i.fibre_needed}}
+								</td>
+
+								<td>
+									{{i.fat_needed}}
+								</td>
+
+								<td>
+									{{i.current_needed_calory}}
+								</td>
+
+						    </tr>
+
+						  {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+
+			<h1 align="center" style="color:blue">No diet plan for tuesday</h1>
+
+			{% endif %}
+
+
+
+			<br>
+			<hr style="color:white:width:10px;">
+			<br>
+
+
+			</div>
+
+
+
+
+
+
+
+
+			{% if wed_b %}
+
+			<div id="wed_wed">
+            <h2 class="heading-section">WEDNESDAY</h2>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-bordered table-dark table-hover">
+						  <thead>
+						    <tr>
+
+								<th>
+									Day
+								</th>
+
+								<th>
+									Slot
+								</th>
+
+								<th>
+									Food
+								</th>
+
+								<th>
+									Quantity
+								</th>
+
+								<th>
+									Protein (grams)
+								</th>
+
+								<th>
+									Carbohydrates (grams)
+								</th>
+
+								<th>
+									Fibre (grams)
+								</th>
+
+								<th>
+									 Fat (grams)
+								</th>
+
+								<th>
+									Calory (kcal)
+								</th>
+
+
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						  {% for i in wed_b %}
+
+						    <tr>
+
+								<td>
+									{{i.Day}}
+								</td>
+
+								<td>
+									{{i.day_slot}}
+								</td>
+
+								<td>
+									{{i.food_name}}
+								</td>
+
+								<td>
+									{{i.quantity_needed}} {{i.unit}}
+								</td>
+
+								<td>
+									{{i.protein_needed}}
+								</td>
+
+								<td>
+									{{i.carbohydrates_needed}}
+								</td>
+
+								<td>
+									{{i.fibre_needed}}
+								</td>
+
+								<td>
+									{{i.fat_needed}}
+								</td>
+
+								<td>
+									{{i.current_needed_calory}}
+								</td>
+
+						    </tr>
+
+						  {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+
+			<h1 align="center" style="color:blue">No diet plan for wednesday</h1>
+
+			{% endif %}
+
+
+
+			<br>
+			<hr style="color:white:width:10px;">
+			<br>
+
+
+			</div>
+
+
+
+
+
+			{% if thu_b %}
+
+			<div id="thu_thu">
+            <h2 class="heading-section">THURSDAY</h2>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-bordered table-dark table-hover">
+						  <thead>
+						    <tr>
+
+								<th>
+									Day
+								</th>
+
+								<th>
+									Slot
+								</th>
+
+								<th>
+									Food
+								</th>
+
+								<th>
+									Quantity
+								</th>
+
+								<th>
+									Protein (grams)
+								</th>
+
+								<th>
+									Carbohydrates (grams)
+								</th>
+
+								<th>
+									Fibre (grams)
+								</th>
+
+								<th>
+									 Fat (grams)
+								</th>
+
+								<th>
+									Calory (kcal)
+								</th>
+
+
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						  {% for i in thu_b %}
+
+						    <tr>
+
+								<td>
+									{{i.Day}}
+								</td>
+
+								<td>
+									{{i.day_slot}}
+								</td>
+
+								<td>
+									{{i.food_name}}
+								</td>
+
+								<td>
+									{{i.quantity_needed}} {{i.unit}}
+								</td>
+
+								<td>
+									{{i.protein_needed}}
+								</td>
+
+								<td>
+									{{i.carbohydrates_needed}}
+								</td>
+
+								<td>
+									{{i.fibre_needed}}
+								</td>
+
+								<td>
+									{{i.fat_needed}}
+								</td>
+
+								<td>
+									{{i.current_needed_calory}}
+								</td>
+
+						    </tr>
+
+						  {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+
+			<h1 align="center" style="color:blue">No diet plan for thursday</h1>
+
+			{% endif %}
+
+
+
+
+			<br>
+			<hr style="color:white:width:10px;">
+			<br>
+
+			</div>
+
+
+
+
+		{% if fri_b %}
+
+			<div id="fri_fri">
+            <h2 class="heading-section">FRIDAY</h2>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-bordered table-dark table-hover">
+						  <thead>
+						    <tr>
+
+								<th>
+									Day
+								</th>
+
+								<th>
+									Slot
+								</th>
+
+								<th>
+									Food
+								</th>
+
+								<th>
+									Quantity
+								</th>
+
+								<th>
+									Protein (grams)
+								</th>
+
+								<th>
+									Carbohydrates (grams)
+								</th>
+
+								<th>
+									Fibre (grams)
+								</th>
+
+								<th>
+									 Fat (grams)
+								</th>
+
+								<th>
+									Calory (kcal)
+								</th>
+
+
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						  {% for i in fri_b %}
+
+						    <tr>
+
+								<td>
+									{{i.Day}}
+								</td>
+
+								<td>
+									{{i.day_slot}}
+								</td>
+
+								<td>
+									{{i.food_name}}
+								</td>
+
+								<td>
+									{{i.quantity_needed}} {{i.unit}}
+								</td>
+
+								<td>
+									{{i.protein_needed}}
+								</td>
+
+								<td>
+									{{i.carbohydrates_needed}}
+								</td>
+
+								<td>
+									{{i.fibre_needed}}
+								</td>
+
+								<td>
+									{{i.fat_needed}}
+								</td>
+
+								<td>
+									{{i.current_needed_calory}}
+								</td>
+
+						    </tr>
+
+						  {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+
+			<h1 align="center" style="color:blue">No diet plan for friday</h1>
+
+			{% endif %}
+
+
+
+			<br>
+			<hr style="color:white:width:10px;">
+			<br>
+
+
+			</div>
+
+
+
+
+
+		{% if sat_b %}
+
+
+			<div id="sat_sat">
+            <h2 class="heading-section">SATURDAY</h2>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-bordered table-dark table-hover">
+						  <thead>
+						    <tr>
+
+								<th>
+									Day
+								</th>
+
+								<th>
+									Slot
+								</th>
+
+								<th>
+									Food
+								</th>
+
+								<th>
+									Quantity
+								</th>
+
+								<th>
+									Protein (grams)
+								</th>
+
+								<th>
+									Carbohydrates (grams)
+								</th>
+
+								<th>
+									Fibre (grams)
+								</th>
+
+								<th>
+									 Fat (grams)
+								</th>
+
+								<th>
+									Calory (kcal)
+								</th>
+
+
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						  {% for i in sat_b %}
+
+						    <tr>
+
+								<td>
+									{{i.Day}}
+								</td>
+
+								<td>
+									{{i.day_slot}}
+								</td>
+
+								<td>
+									{{i.food_name}}
+								</td>
+
+								<td>
+									{{i.quantity_needed}} {{i.unit}}
+								</td>
+
+								<td>
+									{{i.protein_needed}}
+								</td>
+
+								<td>
+									{{i.carbohydrates_needed}}
+								</td>
+
+								<td>
+									{{i.fibre_needed}}
+								</td>
+
+								<td>
+									{{i.fat_needed}}
+								</td>
+
+								<td>
+									{{i.current_needed_calory}}
+								</td>
+
+						    </tr>
+
+						  {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+
+			<h1 align="center" style="color:blue">No diet plan for saturday</h1>
+
+			{% endif %}
+
+
+
+
+			<br>
+			<hr style="color:white:width:10px;">
+			<br>
+
+			</div>
+
+
+
+
+
+
+			{% if sun_b %}
+
+			<div id="sun_sun">
+            <h2 class="heading-section">SUNDAY</h2>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-bordered table-dark table-hover">
+						  <thead>
+						    <tr>
+
+								<th>
+									Day
+								</th>
+
+								<th>
+									Slot
+								</th>
+
+								<th>
+									Food
+								</th>
+
+								<th>
+									Quantity
+								</th>
+
+								<th>
+									Protein (grams)
+								</th>
+
+								<th>
+									Carbohydrates (grams)
+								</th>
+
+								<th>
+									Fibre (grams)
+								</th>
+
+								<th>
+									 Fat (grams)
+								</th>
+
+								<th>
+									Calory (kcal)
+								</th>
+
+
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						  {% for i in sun_b %}
+
+						    <tr>
+
+								<td>
+									{{i.Day}}
+								</td>
+
+								<td>
+									{{i.day_slot}}
+								</td>
+
+								<td>
+									{{i.food_name}}
+								</td>
+
+								<td>
+									{{i.quantity_needed}} {{i.unit}}
+								</td>
+
+								<td>
+									{{i.protein_needed}}
+								</td>
+
+								<td>
+									{{i.carbohydrates_needed}}
+								</td>
+
+								<td>
+									{{i.fibre_needed}}
+								</td>
+
+								<td>
+									{{i.fat_needed}}
+								</td>
+
+								<td>
+									{{i.current_needed_calory}}
+								</td>
+
+						    </tr>
+
+						  {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+
+			<h1 align="center" style="color:blue">No diet plan for sunday</h1>
+
+			{% endif %}
+
+
+			</div>
+
+		</div>
+		<br><br>
+		<div align="center">
+			<button type="button" onclick="location.href='{% url 'cr_new_diet_pln' %}'" name='mybtn2'>Back</button>
+		</div>
+	</section>
+
+	<script src="{% static 'tabble/js/jquery.min.js' %}"></script>
+  <script src="{% static 'tabble/js/popper.js' %}"></script>
+  <script src="{% static 'tabble/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'tabble/js/main.js' %}"></script>
+
+
+
+ <script>
+
+    function loadd() {
+    var element = document.getElementById("mon_mon");
+    element.style.display = "none";
+
+    var element = document.getElementById("tue_tue");
+    element.style.display = "none";
+
+    var element = document.getElementById("wed_wed");
+    element.style.display = "none";
+
+    var element = document.getElementById("thu_thu");
+    element.style.display = "none";
+
+    var element = document.getElementById("fri_fri");
+    element.style.display = "none";
+
+    var element = document.getElementById("sat_sat");
+    element.style.display = "none";
+
+    var element = document.getElementById("sun_sun");
+    element.style.display = "none";
+
+    }
+
+
+
+    function loadd_mon() {
+
+   var element = document.getElementById("mon_mon");
+    element.style.display = "block";
+
+    var element = document.getElementById("tue_tue");
+    element.style.display = "none";
+
+    var element = document.getElementById("wed_wed");
+    element.style.display = "none";
+
+    var element = document.getElementById("thu_thu");
+    element.style.display = "none";
+
+    var element = document.getElementById("fri_fri");
+    element.style.display = "none";
+
+    var element = document.getElementById("sat_sat");
+    element.style.display = "none";
+
+    var element = document.getElementById("sun_sun");
+    element.style.display = "none";
+
+    }
+
+
+   function loadd_tue() {
+
+   var element = document.getElementById("mon_mon");
+    element.style.display = "none";
+
+    var element = document.getElementById("tue_tue");
+    element.style.display = "block";
+
+    var element = document.getElementById("wed_wed");
+    element.style.display = "none";
+
+    var element = document.getElementById("thu_thu");
+    element.style.display = "none";
+
+    var element = document.getElementById("fri_fri");
+    element.style.display = "none";
+
+    var element = document.getElementById("sat_sat");
+    element.style.display = "none";
+
+    var element = document.getElementById("sun_sun");
+    element.style.display = "none";
+
+    }
+
+
+
+ function loadd_wed() {
+
+   var element = document.getElementById("mon_mon");
+    element.style.display = "none";
+
+    var element = document.getElementById("tue_tue");
+    element.style.display = "none";
+
+    var element = document.getElementById("wed_wed");
+    element.style.display = "block";
+
+    var element = document.getElementById("thu_thu");
+    element.style.display = "none";
+
+    var element = document.getElementById("fri_fri");
+    element.style.display = "none";
+
+    var element = document.getElementById("sat_sat");
+    element.style.display = "none";
+
+    var element = document.getElementById("sun_sun");
+    element.style.display = "none";
+
+    }
+
+
+
+    function loadd_thu() {
+
+   var element = document.getElementById("mon_mon");
+    element.style.display = "none";
+
+    var element = document.getElementById("tue_tue");
+    element.style.display = "none";
+
+    var element = document.getElementById("wed_wed");
+    element.style.display = "none";
+
+    var element = document.getElementById("thu_thu");
+    element.style.display = "block";
+
+    var element = document.getElementById("fri_fri");
+    element.style.display = "none";
+
+    var element = document.getElementById("sat_sat");
+    element.style.display = "none";
+
+    var element = document.getElementById("sun_sun");
+    element.style.display = "none";
+
+    }
+
+
+
+
+     function loadd_fri() {
+
+   var element = document.getElementById("mon_mon");
+    element.style.display = "none";
+
+    var element = document.getElementById("tue_tue");
+    element.style.display = "none";
+
+    var element = document.getElementById("wed_wed");
+    element.style.display = "none";
+
+    var element = document.getElementById("thu_thu");
+    element.style.display = "none";
+
+    var element = document.getElementById("fri_fri");
+    element.style.display = "block";
+
+    var element = document.getElementById("sat_sat");
+    element.style.display = "none";
+
+    var element = document.getElementById("sun_sun");
+    element.style.display = "none";
+
+    }
+
+
+
+
+     function loadd_sat() {
+
+   var element = document.getElementById("mon_mon");
+    element.style.display = "none";
+
+    var element = document.getElementById("tue_tue");
+    element.style.display = "none";
+
+    var element = document.getElementById("wed_wed");
+    element.style.display = "none";
+
+    var element = document.getElementById("thu_thu");
+    element.style.display = "none";
+
+    var element = document.getElementById("fri_fri");
+    element.style.display = "none";
+
+    var element = document.getElementById("sat_sat");
+    element.style.display = "block";
+
+    var element = document.getElementById("sun_sun");
+    element.style.display = "none";
+
+    }
+
+
+
+
+         function loadd_sun() {
+
+   var element = document.getElementById("mon_mon");
+    element.style.display = "none";
+
+    var element = document.getElementById("tue_tue");
+    element.style.display = "none";
+
+    var element = document.getElementById("wed_wed");
+    element.style.display = "none";
+
+    var element = document.getElementById("thu_thu");
+    element.style.display = "none";
+
+    var element = document.getElementById("fri_fri");
+    element.style.display = "none";
+
+    var element = document.getElementById("sat_sat");
+    element.style.display = "none";
+
+    var element = document.getElementById("sun_sun");
+    element.style.display = "block";
+
+    }
+
+</script>
+
+
+
+
+	</body>
+</html>
+

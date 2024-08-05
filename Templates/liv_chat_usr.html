@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live chat</title>
+
+
+  <style>
+
+    * {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: #fff5f2;
+}
+
+.page {
+  display: block;
+  position: relative;
+  top: 50%;
+  width: 20%;
+  margin: 0 auto;
+}
+
+h1{
+  color: white;
+  text-align: center;
+  postion: relative;
+  top: 15%
+}
+.select-dropdown {
+  background-color: tomato;
+  border-radius: 2px;
+  margin: 0 auto;
+}
+.select-dropdown select {
+  font-family: "helvetica neue", helvetica;
+  font: 26px Cursive;
+  color: white;
+  padding: 8px;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+}
+.select-dropdown select:active, .select-dropdown select:focus {
+  outline: none;
+  box-shadow: none;
+}
+.select-dropdown:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  margin-top: -2px;
+  right: 8px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid white;
+}
+.select-dropdown option{
+  font: 26px Cursive;
+  background: yellow;
+  color: #444;
+  width: 100%;
+}
+
+
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap");
+:root {
+  --black: #041a2f;
+  --white: #ffffff;
+  --primary: #ff69ad;
+}
+
+html,
+body {
+  {% comment %} font-family: "Montserrat", "Open Sans", sans-serif; {% endcomment %}
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black);
+  background-color: lighten-color(color-black, 0.9);
+  margin: 0 auto;
+  scroll-behavior: smooth;
+  max-width: 992px;
+  padding: 2.5rem 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 700;
+  margin: 0 0 3rem;
+  color: var(--black);
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.button {
+  position: relative;
+  border: 0;
+  transition: 0.5s;
+  z-index: 1;
+  min-width: 15rem;
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  line-height: 1;
+  font-family: "Montserrat", "Open Sans", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: var(--black);
+  color: var(--white);
+}
+.button:before, .button:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+}
+{% comment %} .button.--glow:hover {
+  background: var(--primary);
+  box-shadow: 0 0 5px var(--primary), 0 0 25px var(--primary);
+} {% endcomment %}
+.button.--glow:hover {
+  background: #FFD700; /* Light shade of orange */
+  box-shadow: 0 0 5px var(--primary), 0 0 25px var(--primary);
+  animation: pulse 1s infinite; /* Adding pulse animation */
+}
+
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 var(--black);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--black);
+  }
+  100% {
+    box-shadow: 0 0 0 var(--black);
+  }
+}
+
+  </style>
+
+
+
+</head>
+<body>
+
+
+
+{% if tht %}
+
+<h1 style="color:black">Live doctors</h1>
+
+  <div class="page">
+    <form method="post" action="{% url 'liv_chat_usr' %}">
+      {% csrf_token %}
+    <div class="select-dropdown">
+      <select name="doc_sel">
+        {% for t in tht %}
+        <option value="{{t.liv_dr.id}}">{{t.liv_dr.user.first_name}} {{t.liv_dr.user.last_name}}</option>
+        {% endfor %}
+      </select>
+    </div><br><br>
+
+
+      <section>
+        <div class="wrapper">
+          <button type="submit" class="button --glow">Chat</button>
+          <button type="button" class="button --glow" onclick="location.href='{% url 'user_home' %}'">back</button>
+        </div>
+    </section>
+
+
+      </form>
+  </div>
+
+{% else %}
+
+<h1 align="center" style="color:black">No doctors online now</h1><br><br>
+<div class="wrapper">
+  <button type="button" class="button --glow" onclick="location.href='{% url 'user_home' %}'">back</button>
+</div>
+{% endif %}
+
+
+
+<script>
+  window.onload = function() {
+      var messages = [{% if messages %}{% for msg in messages %}'{{ msg }}',{% endfor %}{% endif %}];
+      if (messages.length > 0) {
+          var messageString = messages.join('\n');
+          alert(messageString);
+          messages = [];
+      }
+  };
+</script>
+
+</body>
+</html>
